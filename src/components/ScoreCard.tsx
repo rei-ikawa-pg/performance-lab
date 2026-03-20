@@ -1,9 +1,4 @@
-import {
-  getMetricStatus,
-  getStatusColor,
-  formatMetricValue,
-  METRIC_LABELS,
-} from "@/lib/utils";
+import { getMetricStatus, getStatusColor, formatMetricValue, METRIC_LABELS } from "@/lib/utils";
 import type { CoreWebVitals } from "@/types/pagespeed";
 
 interface ScoreCardProps {
@@ -35,9 +30,7 @@ export function ScoreCard({ metrics }: ScoreCardProps) {
             <div className="mt-1 text-2xl font-bold" style={{ color }}>
               {formatMetricValue(key, value)}
             </div>
-            <div className="mt-1 text-xs text-muted-foreground">
-              {METRIC_LABELS[key]}
-            </div>
+            <div className="mt-1 text-xs text-muted-foreground">{METRIC_LABELS[key]}</div>
           </div>
         );
       })}

@@ -1,10 +1,5 @@
 import { describe, it, expect } from "vitest";
-import {
-  getMetricStatus,
-  getStatusColor,
-  getScoreStatus,
-  formatMetricValue,
-} from "@/lib/utils";
+import { getMetricStatus, getStatusColor, getScoreStatus, formatMetricValue } from "@/lib/utils";
 
 describe("getMetricStatus", () => {
   it("returns good for LCP <= 2500", () => {

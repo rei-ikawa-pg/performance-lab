@@ -56,10 +56,7 @@ export function MeasureForm() {
           disabled={mutation.isPending}
           aria-label="計測するURL"
         />
-        <Button
-          onClick={() => mutation.mutate()}
-          disabled={!isValidUrl || mutation.isPending}
-        >
+        <Button onClick={() => mutation.mutate()} disabled={!isValidUrl || mutation.isPending}>
           {mutation.isPending ? "計測中..." : "計測する"}
         </Button>
       </div>

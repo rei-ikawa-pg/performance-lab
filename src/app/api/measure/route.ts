@@ -28,7 +28,10 @@ export async function POST(request: Request) {
 
   const parsed = MeasureRequestSchema.safeParse(body);
   if (!parsed.success) {
-    return NextResponse.json({ error: "無効なリクエストです", details: parsed.error.issues }, { status: 400 });
+    return NextResponse.json(
+      { error: "無効なリクエストです", details: parsed.error.issues },
+      { status: 400 },
+    );
   }
 
   try {

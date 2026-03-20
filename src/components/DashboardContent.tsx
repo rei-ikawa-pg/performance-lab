@@ -90,7 +90,9 @@ export function DashboardContent({ measurements, urls }: DashboardContentProps) 
                         {m.url}
                       </Link>
                     </td>
-                    <td className="px-4 py-2 text-center">{m.strategy === "mobile" ? "モバイル" : "デスクトップ"}</td>
+                    <td className="px-4 py-2 text-center">
+                      {m.strategy === "mobile" ? "モバイル" : "デスクトップ"}
+                    </td>
                     <td className="px-4 py-2 text-center font-bold" style={{ color }}>
                       {m.performance_score}
                     </td>

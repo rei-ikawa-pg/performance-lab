@@ -43,7 +43,9 @@ export function GaugeChart({ score, size = 160, label }: GaugeChartProps) {
         .startAngle(-Math.PI * 0.75)
         .endAngle(Math.PI * 0.75);
 
-      g.append("path").attr("d", bgArc({}) as string).attr("fill", "#e0e0e0");
+      g.append("path")
+        .attr("d", bgArc({}) as string)
+        .attr("fill", "#e0e0e0");
 
       // スコアアーク
       const status = getScoreStatus(score);
@@ -58,10 +60,7 @@ export function GaugeChart({ score, size = 160, label }: GaugeChartProps) {
         .cornerRadius(arcWidth / 2);
 
       g.append("path")
-        .attr(
-          "d",
-          scoreArc.endAngle(-Math.PI * 0.75)({}) as string,
-        )
+        .attr("d", scoreArc.endAngle(-Math.PI * 0.75)({}) as string)
         .attr("fill", color)
         .transition()
         .duration(800)
