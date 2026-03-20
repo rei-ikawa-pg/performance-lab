@@ -1,6 +1,6 @@
 const rateLimitMap = new Map<string, number[]>();
 
-const WINDOW_MS = 60 * 60 * 1000; // 1 hour
+const WINDOW_MS = 60 * 60 * 1000; // 1時間
 const MAX_REQUESTS = 10;
 
 export function rateLimit(userId: string): { success: boolean; remaining: number } {

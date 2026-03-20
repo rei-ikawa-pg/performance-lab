@@ -20,7 +20,7 @@ export function AuditList({ audits }: AuditListProps) {
   };
 
   if (audits.length === 0) {
-    return <p className="text-sm text-muted-foreground">No improvement suggestions found.</p>;
+    return <p className="text-sm text-muted-foreground">改善提案は見つかりませんでした。</p>;
   }
 
   return (

@@ -24,8 +24,8 @@ export interface Audit {
   description: string;
   score: number | null;
   scoreDisplayMode: string;
-  displayValue?: string;
-  details?: Record<string, unknown>;
+  displayValue?: string | undefined;
+  details?: Record<string, unknown> | undefined;
 }
 
 export interface MeasureResult {

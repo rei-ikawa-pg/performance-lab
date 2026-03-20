@@ -26,6 +26,8 @@ export function ScoreCard({ metrics }: ScoreCardProps) {
           <div
             key={key}
             className="rounded-lg border border-border bg-card p-4 text-center"
+            role="status"
+            aria-label={`${METRIC_LABELS[key]}: ${formatMetricValue(key, value)}、状態: ${status}`}
           >
             <div className="text-xs font-medium uppercase text-muted-foreground">
               {key.toUpperCase()}

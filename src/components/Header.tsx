@@ -16,7 +16,7 @@ export function Header() {
         <nav className="flex items-center gap-4">
           {session?.user && (
             <Link href="/dashboard" className="text-sm text-muted-foreground hover:text-foreground">
-              Dashboard
+              ダッシュボード
             </Link>
           )}
           {status === "loading" ? (
@@ -25,12 +25,12 @@ export function Header() {
             <div className="flex items-center gap-3">
               <span className="text-sm text-muted-foreground">{session.user.name}</span>
               <Button variant="outline" size="sm" onClick={() => signOut()}>
-                Log out
+                ログアウト
               </Button>
             </div>
           ) : (
             <Button size="sm" onClick={() => signIn("google")}>
-              Sign in with Google
+              Googleでログイン
             </Button>
           )}
         </nav>

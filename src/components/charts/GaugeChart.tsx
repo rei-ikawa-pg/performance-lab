@@ -35,7 +35,7 @@ export function GaugeChart({ score, size = 160, label }: GaugeChartProps) {
         .append("g")
         .attr("transform", `translate(${width / 2},${height / 2})`);
 
-      // Background arc
+      // 背景アーク
       const bgArc = d3
         .arc<unknown>()
         .innerRadius(radius - arcWidth)
@@ -45,7 +45,7 @@ export function GaugeChart({ score, size = 160, label }: GaugeChartProps) {
 
       g.append("path").attr("d", bgArc({}) as string).attr("fill", "#e0e0e0");
 
-      // Score arc
+      // スコアアーク
       const status = getScoreStatus(score);
       const color = getStatusColor(status);
       const endAngle = -Math.PI * 0.75 + (Math.PI * 1.5 * score) / 100;
@@ -70,7 +70,7 @@ export function GaugeChart({ score, size = 160, label }: GaugeChartProps) {
           return (t: number) => scoreArc.endAngle(interpolate(t))({}) as string;
         });
 
-      // Score text
+      // スコアテキスト
       g.append("text")
         .attr("text-anchor", "middle")
         .attr("dy", "0.1em")
@@ -92,7 +92,7 @@ export function GaugeChart({ score, size = 160, label }: GaugeChartProps) {
         width={size}
         height={size}
         role="img"
-        aria-label={`${label ?? "Performance"} score: ${score} out of 100`}
+        aria-label={`${label ?? "パフォーマンス"}スコア: 100点中${score}点`}
       />
       {label && <span className="mt-1 text-sm text-muted-foreground">{label}</span>}
     </div>

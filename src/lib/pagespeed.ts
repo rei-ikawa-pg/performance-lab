@@ -1,3 +1,4 @@
+import "server-only";
 import { PageSpeedResponseSchema, type MeasureResult, type Audit } from "@/types/pagespeed";
 
 const PAGESPEED_API_URL = "https://www.googleapis.com/pagespeedonline/v5/runPagespeed";
@@ -8,7 +9,7 @@ export async function fetchPageSpeedData(
 ): Promise<MeasureResult> {
   const apiKey = process.env.PAGESPEED_API_KEY;
   if (!apiKey) {
-    throw new Error("PAGESPEED_API_KEY is not configured");
+    throw new Error("PAGESPEED_API_KEYが設定されていません");
   }
 
   const params = new URLSearchParams({
@@ -20,7 +21,7 @@ export async function fetchPageSpeedData(
 
   const response = await fetch(`${PAGESPEED_API_URL}?${params}`);
   if (!response.ok) {
-    throw new Error(`PageSpeed API error: ${response.status} ${response.statusText}`);
+    throw new Error(`PageSpeed APIエラー: ${response.status} ${response.statusText}`);
   }
 
   const raw = await response.json();

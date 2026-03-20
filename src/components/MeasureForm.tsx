@@ -15,7 +15,7 @@ async function measureUrl(url: string, strategy: "mobile" | "desktop"): Promise<
 
   if (!res.ok) {
     const data = await res.json();
-    throw new Error(data.error ?? `Request failed: ${res.status}`);
+    throw new Error(data.error ?? `リクエスト失敗: ${res.status}`);
   }
 
   return res.json();
@@ -29,7 +29,7 @@ export function MeasureForm() {
   const mutation = useMutation({
     mutationFn: () => measureUrl(url, strategy),
     onSuccess: (data) => {
-      // Store result in sessionStorage for the report page
+      // レポートページ用にsessionStorageへ保存
       sessionStorage.setItem(`measure-${data.id}`, JSON.stringify(data));
       router.push(`/report/${data.id}`);
     },
@@ -54,13 +54,13 @@ export function MeasureForm() {
           placeholder="https://example.com"
           className="flex-1 rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
           disabled={mutation.isPending}
-          aria-label="URL to measure"
+          aria-label="計測するURL"
         />
         <Button
           onClick={() => mutation.mutate()}
           disabled={!isValidUrl || mutation.isPending}
         >
-          {mutation.isPending ? "Measuring..." : "Measure"}
+          {mutation.isPending ? "計測中..." : "計測する"}
         </Button>
       </div>
 
@@ -75,7 +75,7 @@ export function MeasureForm() {
                 : "bg-muted text-muted-foreground hover:bg-accent"
             }`}
           >
-            {s}
+            {s === "mobile" ? "モバイル" : "デスクトップ"}
           </button>
         ))}
       </div>
@@ -83,7 +83,7 @@ export function MeasureForm() {
       {mutation.isPending && (
         <div className="text-center text-sm text-muted-foreground">
           <div className="mx-auto mb-2 h-8 w-8 animate-spin rounded-full border-4 border-muted border-t-primary" />
-          Analyzing performance... This may take 10-30 seconds.
+          パフォーマンスを分析中... 10〜30秒かかる場合があります。
         </div>
       )}
 

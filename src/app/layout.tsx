@@ -16,7 +16,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "Performance Lab",
-  description: "Measure Core Web Vitals and get improvement suggestions for any URL",
+  description: "任意のURLのCore Web Vitalsを計測し、改善提案を取得できます",
 };
 
 export default function RootLayout({
