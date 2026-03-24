@@ -15,8 +15,21 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Performance Lab",
+  title: {
+    default: "Performance Lab",
+    template: "%s | Performance Lab",
+  },
   description: "任意のURLのCore Web Vitalsを計測し、改善提案を取得できます",
+  metadataBase: new URL(process.env.NEXTAUTH_URL ?? "https://performance-lab.vercel.app"),
+  openGraph: {
+    title: "Performance Lab",
+    description: "Core Web Vitals を計測し、改善提案を取得",
+    type: "website",
+    locale: "ja_JP",
+  },
+  twitter: {
+    card: "summary_large_image",
+  },
 };
 
 export default function RootLayout({

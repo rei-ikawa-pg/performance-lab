@@ -16,6 +16,7 @@ export async function fetchPageSpeedData(
     url,
     strategy,
     category: "performance",
+    locale: "ja",
     key: apiKey,
   });
 

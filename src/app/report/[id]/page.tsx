@@ -2,10 +2,19 @@
 
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
-import { GaugeChart } from "@/components/charts/GaugeChart";
+import dynamic from "next/dynamic";
 import { ScoreCard } from "@/components/ScoreCard";
 import { AuditList } from "@/components/AuditList";
 import type { MeasureResult } from "@/types/pagespeed";
+
+// D3.jsを含むGaugeChartを遅延ロードしバンドルサイズを削減
+const GaugeChart = dynamic(
+  () => import("@/components/charts/GaugeChart").then((mod) => ({ default: mod.GaugeChart })),
+  {
+    ssr: false,
+    loading: () => <div className="h-[200px] w-[200px] animate-pulse rounded-full bg-muted" />,
+  },
+);
 
 export default function ReportPage() {
   const params = useParams<{ id: string }>();

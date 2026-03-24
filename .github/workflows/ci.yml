@@ -1,0 +1,39 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: npm
+
+      - run: npm ci
+
+      - name: 型チェック
+        run: npm run type-check
+
+      - name: Lint
+        run: npm run lint
+
+      - name: フォーマットチェック
+        run: npm run format:check
+
+      - name: ユニットテスト
+        run: npm run test
+
+      - name: Playwright インストール
+        run: npx playwright install --with-deps chromium
+
+      - name: E2Eテスト
+        run: npm run test:e2e

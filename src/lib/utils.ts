@@ -46,9 +46,26 @@ export function formatMetricValue(metric: MetricName, value: number): string {
 }
 
 export const METRIC_LABELS: Record<MetricName, string> = {
-  lcp: "Largest Contentful Paint",
-  cls: "Cumulative Layout Shift",
-  inp: "Interaction to Next Paint",
-  fcp: "First Contentful Paint",
-  ttfb: "Time to First Byte",
+  lcp: "最大コンテンツ描画",
+  cls: "レイアウトのずれ",
+  inp: "操作の応答速度",
+  fcp: "最初のコンテンツ描画",
+  ttfb: "サーバー応答時間",
 };
+
+const STATUS_LABELS: Record<MetricStatus, string> = {
+  good: "良好",
+  "needs-improvement": "改善が必要",
+  poor: "不良",
+};
+
+export function getStatusLabel(status: MetricStatus): string {
+  return STATUS_LABELS[status];
+}
+
+export function formatThreshold(metric: MetricName): string {
+  const [good] = THRESHOLDS[metric];
+  if (metric === "cls") return `≤ ${good}`;
+  if (good >= 1000) return `≤ ${good / 1000}s`;
+  return `≤ ${good}ms`;
+}
